@@ -2,7 +2,7 @@
 
 **210,199 ha of forest lost — 19.8% of the forest standing in 2000 — with annual loss running 5.5× higher after 2014. Three independent satellite methods then failed to determine whether that loss is permanent conversion or rotational clearing, and the reason why is the most useful finding in this project.**
 
-![Forest loss by year, Chittagong Hill Tracts](figures/fig5_hero_map.png)
+![Forest loss by year, Chittagong Hill Tracts](Figures/fig5_hero_map.png)
 
 ---
 
@@ -29,19 +29,19 @@ So: how much forest is being lost, and is it coming back?
 
 **2. Annual loss rose sharply from 2014 — but part of that step is a sensor artefact.**
 
-![Annual forest loss](figures/fig1_annual_loss.png)
+![Annual forest loss](Figures/fig1_annual_loss.png)
 
 Loss averaged ~3,100 ha/yr from 2001–2013 and ~17,000 ha/yr from 2014–2023, peaking at 26,157 ha in 2017. Landsat 8 came online in 2013 and Hansen's detection sensitivity improved with it, so the break coincides exactly with a change in the instrument. Plantation expansion in the region is well documented and some of this increase is certainly real — but the two cannot be separated with this dataset alone, and any headline built on the 5.5× figure has to say so.
 
 **3. Terrain does not explain where loss happens.**
 
-![Loss by terrain](figures/fig2_terrain.png)
+![Loss by terrain](Figures/fig2_terrain.png)
 
 Loss as a share of baseline forest is flat at 22–23% across every elevation band above 100 m, and flat at 18–21% across slopes up to 30°. Only the steepest ground (>30°) differs, at 10.4% — simply harder to clear. There is no accessibility gradient to exploit. This was a null result; it is reported rather than dropped.
 
 **4. NDVI cannot see the clearing.**
 
-![NDVI trajectory](figures/fig3_ndvi.png)
+![NDVI trajectory](Figures/fig3_ndvi.png)
 
 Aligning five loss cohorts (2014–2018) on their own clearing year, dry-season NDVI dips by just **4.1%** — from 0.776 to 0.744 — and returns to baseline within one year. A genuine clear-cut should drop NDVI from ~0.78 to 0.3–0.5. It doesn't here.
 
@@ -58,7 +58,7 @@ When 81% of cleared land passes a 95% recovery bar, the metric is not measuring 
 
 **5. Lidar canopy height shows no regrowth gradient either.**
 
-![GEDI canopy height](figures/fig4_gedi.png)
+![GEDI canopy height](Figures/fig4_gedi.png)
 
 GEDI `rh98` over land cleared 2 to 12 years before measurement is flat at 14.6–15.7 m. Two-year-old regrowth is not 15 m tall. Standard deviations of ~9 m — over half the mean — point to the cause: GEDI's 25 m footprint plus ~10 m geolocation error means most shots straddle cleared ground and the trees around it, and `rh98` reports the tallest returns in the footprint. It is measuring the neighbours.
 
@@ -106,11 +106,11 @@ All open data. No commercial imagery.
 ## Reproduce
 
 ```
-scripts/01_cht_forest_change.js   Loss totals, district and terrain breakdowns
-scripts/02_cht_recovery.js        NDVI trajectory and per-pixel recovery
-scripts/03_cht_gedi.js            GEDI canopy height by cohort
-figures/mkfigs.py                 All figures from the exported CSVs
-data/                             Exported CSVs and GeoTIFFs
+Scripts/01_cht_forest_change.js   Loss totals, district and terrain breakdowns
+Scripts/02_cht_recovery.js        NDVI trajectory and per-pixel recovery
+Scripts/03_cht_gedi.js            GEDI canopy height by cohort
+Figures/mkfigs.py                 All figures from the exported CSVs
+Data/                             Exported CSVs and GeoTIFFs
 ```
 
 The `.js` files run in the [Earth Engine Code Editor](https://code.earthengine.google.com). Each exports CSVs to Drive; `mkfigs.py` turns those into the figures above (`pip install matplotlib pandas rasterio`).
